@@ -2,7 +2,6 @@ import random
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
-
 # Список всех гексаграмм с их номерами и краткими толкованиями
 HEXAGRAMS = {
 1: "Гексаграмма №1 - Цянь (Творчество): Это символ чистой, созидательной энергии. Гексаграмма указывает на время активных действий и новых начинаний. Важно быть целеустремлённым, не теряя времени на раздумья.",
@@ -71,7 +70,6 @@ HEXAGRAMS = {
 64: "Гексаграмма №64 - Вэй Цзи (Прежде завершения): Символ незавершённости. Вы близки к завершению, но важно не торопиться и довести начатое до конца.",
 }
 
-
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Приветственное сообщение"""
     await update.message.reply_text(
@@ -105,11 +103,6 @@ async def hexagram(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(
         f"Ответ от книги перемен: {hexagram_number}\n{interpretation}"
     )
-
-# Обработчик для маршрута /webhook
-async def webhook(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text("Это ответ на ваш вебхук!")
-
 def main() -> None:
     """Запуск бота"""
     application = Application.builder().token("8010384717:AAHssrQX8rPB_RZNH_ls8nXwvoTqbbyoVzE").build()
